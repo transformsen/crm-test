@@ -1,0 +1,10 @@
+@import "src/styles/mixins";
+
+:host {
+  @include flex(center);
+}
+
+// save button
+app-save-button {
+  margin-right: 20px;
+}

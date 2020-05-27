@@ -1,0 +1,24 @@
+<!-- producer type -->
+<app-select-field
+  (appValueChange)="onProducerTypeChange($event)"
+  [appValue]="type"
+  [options]="options"
+  class="crm-search-field"></app-select-field>
+
+<!-- switch by type -->
+<ng-container
+  [ngSwitch]="type">
+  <!-- default producer -->
+  <app-default-producer-search-fields
+    (entered)="entered.emit()"
+    (fieldsChanged)="onFieldsChanged($event)"
+    *ngSwitchCase="'producer'"
+    [fields]="fields"></app-default-producer-search-fields>
+
+  <!-- producer organization -->
+  <app-producer-organization-search-fields
+    (entered)="entered.emit()"
+    (fieldsChanged)="onFieldsChanged($event)"
+    *ngSwitchCase="'producerOrganization'"
+    [fields]="fields"></app-producer-organization-search-fields>
+</ng-container>

@@ -1,0 +1,43 @@
+@import "src/styles/mixins";
+@import "src/styles/colors";
+
+:host {
+  @include border(1px solid $whisper);
+  @include padding(10px);
+  border-radius: 4px;
+  display: block;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+th {
+  @include openSansSemiBold;
+  font-size: 16px;
+}
+
+td {
+  @include borderTop(1px solid $whisper);
+  @include openSansRegular;
+  font-size: 14px;
+}
+
+th, td {
+  @include padding(16px);
+  color: rgba($black, .74);
+  text-align: left;
+}
+
+thead {
+  tr {
+    th:first-of-type {
+      width: 15%;
+    }
+
+    th:last-of-type {
+      width: 85%;
+    }
+  }
+}

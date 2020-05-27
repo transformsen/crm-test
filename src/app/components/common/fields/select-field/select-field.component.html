@@ -1,0 +1,24 @@
+<mat-form-field appearance="outline">
+  <!-- label -->
+  <mat-label
+    *ngIf="label">
+    {{label}}
+  </mat-label>
+
+  <!-- select -->
+  <mat-select
+    (valueChange)="appValueChange.emit($event)"
+    [value]="appValue">
+    <!-- options -->
+    <mat-option
+      *ngFor="let item of options"
+      [value]="item.value">
+      {{item.label}}
+    </mat-option>
+  </mat-select>
+</mat-form-field>
+
+<!-- error for field -->
+<app-field-error *ngIf="error">
+  {{error}}
+</app-field-error>

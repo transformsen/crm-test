@@ -1,0 +1,43 @@
+@import "../../../../styles/mixins";
+@import "../../../../styles/colors";
+@import "../../../../styles/theming";
+
+:host {
+  @include flex(flex-start);
+  cursor: pointer;
+
+  &.checked {
+    .crm-field-checkbox-label {
+      @include openSansSemiBold;
+      color: $jade;
+    }
+  }
+
+  ::ng-deep {
+    // color theming for checkbox
+    @include crmJadeTheme;
+  }
+}
+
+// checkbox wrapper
+.crm-field-checkbox-wrapper{
+  @include box(24px);
+  @include flex(center, center);
+  margin-right: 10px;
+}
+
+mat-checkbox {
+  ::ng-deep {
+    .mat-checkbox-inner-container {
+      @include box(18px);
+    }
+  }
+}
+
+// label
+.crm-field-checkbox-label {
+  @include openSansRegular;
+  font-size: 16px;
+  line-height: 24px;
+  color: rgba($black, .6);
+}

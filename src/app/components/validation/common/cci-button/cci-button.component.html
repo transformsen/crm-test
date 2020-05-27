@@ -1,0 +1,20 @@
+<!-- container for button -->
+<div class="crm-cci-container">
+  <!-- view cci message button -->
+  <button
+    (click)="openModal()"
+    mat-button>
+    VIEW CRITICAL CCI MESSAGES
+  </button>
+</div>
+
+<ng-container
+  *ngIf="showModal">
+  <!-- modal -->
+  <app-cci-modal
+    (confirmClicked)="closeModal()"
+    [cci]="cci"></app-cci-modal>
+
+  <!-- cover -->
+  <div class="crm-cover"></div>
+</ng-container>

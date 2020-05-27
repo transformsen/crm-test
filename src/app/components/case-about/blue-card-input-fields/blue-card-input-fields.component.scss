@@ -1,0 +1,17 @@
+@import "src/styles/mixins";
+
+:host {
+  display: block;
+}
+
+// case about fields row
+.crm-case-about-fields {
+  &.crm-case-about-fields {
+    margin-top: 20px;
+  }
+}
+
+// case about field
+.crm-case-about-field {
+  width: calc((100% - 40px) / 3);
+}

@@ -1,0 +1,5 @@
+@import "src/styles/mixins";
+
+app-hipaa-matrix-button {
+  @include padding(12px);
+}

@@ -1,0 +1,42 @@
+<!-- title -->
+<div class="crm-title">
+  <!-- back icon will be displayed only previousRoute is existing -->
+  <app-icon-chevron-left
+    *ngIf="previousRoute"
+    [routerLink]="previousRoute"></app-icon-chevron-left>
+
+  <!-- title label -->
+  <div class="crm-title-label">
+    Search & Validation
+  </div>
+</div>
+
+<!-- inputs -->
+<div
+  class="crm-header-fields"
+  fxLayout="row"
+  fxLayoutAlign="space-between center"
+  fxLayoutGap="20">
+  <!-- caller name -->
+  <app-input-field
+    (appValueChange)="onCallerNameChange($event)"
+    [appValue]="callerName"
+    [disabled]="disabled"
+    [error]="errors.callerNameError"
+    required="true"
+    label="Caller Name"
+    (entered)="entered.emit()"
+    theme="white"></app-input-field>
+
+  <!-- callback number -->
+  <app-input-field
+    (appValueChange)="onCallbackNumberChange($event)"
+    [appValue]="callbackNumber"
+    [disabled]="disabled"
+    label="Callback Number"
+    (entered)="entered.emit()"
+    [error]="errors.callbackNumberError"
+    required="true"
+    theme="white"
+    type="number"></app-input-field>
+</div>

@@ -1,0 +1,52 @@
+<!-- search field line -->
+<div
+  class="crm-search-field-line"
+  fxLayout="row"
+  fxLayoutGap="20px">
+  <!-- npi -->
+  <app-npi-field
+    (appValueChange)="onFieldChange('npi', $event)"
+    (entered)="onEntered()"
+    (forceEntered)="onEntered()"
+    [appValue]="fields.npi"
+    class="crm-search-field"></app-npi-field>
+
+  <!-- first name -->
+  <app-name-field
+    #firstName
+    (appValueChange)="onFieldChange('firstName', $event)"
+    (entered)="onEntered()"
+    (forceEntered)="onEntered()"
+    [appValue]="fields.firstName"
+    [minLength]="2"
+    class="crm-search-field"
+    label="First Name"></app-name-field>
+
+  <!-- last name -->
+  <app-name-field
+    #lastName
+    (appValueChange)="onFieldChange('lastName', $event)"
+    (entered)="onEntered()"
+    (forceEntered)="onEntered()"
+    [appValue]="fields.lastName"
+    [minLength]="2"
+    class="crm-search-field"
+    label="Last Name"></app-name-field>
+</div>
+
+<!-- field line -->
+<div
+  class="crm-search-field-line"
+  fxLayout="row"
+  fxLayoutGap="20px">
+  <!-- tax id -->
+  <app-tax-id-field
+    (appValueChange)="onFieldChange('taxId', $event)"
+    (entered)="onEntered()"
+    (forceEntered)="onEntered()"
+    [appValue]="fields.taxId"
+    class="crm-search-field"></app-tax-id-field>
+</div>
+
+<!-- search field line -->
+

@@ -1,0 +1,77 @@
+@import "../../../../../styles/mixins";
+@import "../../../../../styles/colors";
+
+$component-border-color: rgba($black, .12);
+
+:host {
+  @include border(1px solid $component-border-color);
+  border-radius: 4px;
+  display: block;
+}
+
+// table header
+.crm-table-header {
+  @include padding(14px 17px 12px);
+  @include borderBottom(1px solid $component-border-color);
+}
+
+// title
+.crm-table-title {
+  @include openSansRegular;
+  font-size: 20px;
+  line-height: 24px;
+}
+
+// sub title
+.crm-table-sub-title {
+  @include openSansRegular;
+  font-size: 14px;
+  line-height: 20px;
+  color: rgba($black, .6);
+}
+
+// table content
+.crm-table-content {
+  @include padding(0 9px);
+}
+
+// table footer
+.crm-table-footer {
+  @include borderTop(1px solid $component-border-color);
+  @include flex(center);
+  @include padding(0 48px);
+  height: 50px;
+}
+
+table {
+  width: 100%;
+
+  ::ng-deep {
+    th, td {
+      @include padding(16px);
+      color: rgba($black, .74);
+    }
+
+    th {
+      @include openSansSemiBold;
+      font-size: 16px;
+      line-height: 24px;
+    }
+
+    td {
+      @include openSansRegular;
+      font-size: 14px;
+      line-height: 20px;
+    }
+
+    tbody {
+      tr:last-of-type {
+        border-bottom: none;
+
+        td {
+          border-bottom: none;
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,10 @@
+@import "src/styles/mixins";
+
+:host {
+  @include flex(center);
+}
+
+// search button
+app-search-button {
+  margin-right: 20px;
+}

@@ -1,0 +1,12 @@
+@import "src/styles/mixins";
+@import "src/styles/colors";
+
+:host {
+  display: block;
+  width: 100%;
+}
+
+// divider
+mat-divider {
+  @include borderTop(2px solid $navy-blue);
+}

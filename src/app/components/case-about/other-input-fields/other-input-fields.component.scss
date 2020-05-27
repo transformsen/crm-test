@@ -1,0 +1,55 @@
+@import "src/styles/colors";
+@import "src/styles/mixins";
+
+:host {
+  display: block;
+  margin-top: 20px;
+
+  mat-form-field {
+    ::ng-deep {
+      .mat-form-field-flex {
+        height: auto;
+      }
+    }
+  }
+}
+
+// form field
+mat-form-field {
+  display: block;
+  width: 100%;
+
+  ::ng-deep {
+    .mat-form-field-subscript-wrapper {
+      @include padding(0 16px);
+      position: relative;
+      top: 3px;
+    }
+  }
+
+  &.mat-form-field-should-float {
+    mat-label {
+      color: rgba($black, .74);
+    }
+  }
+
+  ::ng-deep {
+    // border color
+    .mat-form-field-outline:not(.mat-form-field-outline-thick) {
+      [class*='mat-form-field-outline-'] {
+        border-color: $nobel;
+      }
+    }
+  }
+
+  // border top of value selected field's outline gap
+  &.mat-form-field-should-float {
+    ::ng-deep {
+      .mat-form-field-outline:not(.mat-form-field-outline-thick) {
+        .mat-form-field-outline-gap {
+          border-top-color: transparent;
+        }
+      }
+    }
+  }
+}

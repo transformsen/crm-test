@@ -1,0 +1,9 @@
+<!-- use table to display -->
+<app-table
+  (pagingChanged)="pagingChanged.emit($event)"
+  (rowSelected)="rowSelected.emit($event)"
+  [columns]="columns"
+  [page]="page"
+  [rows]="rows"
+  [size]="size"
+  [total]="total"></app-table>

@@ -1,0 +1,11 @@
+@import "src/styles/mixins";
+
+:host {
+  display: block;
+  margin-bottom: 10px;
+}
+
+// search field
+.crm-search-field {
+  width: calc((100% - 40px) / 3);
+}

@@ -1,0 +1,6 @@
+@import "../../../../../styles/mixins";
+
+:host {
+  @include box(24px);
+  @include flex(center, center);
+}

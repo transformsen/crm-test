@@ -1,0 +1,41 @@
+<!-- header -->
+<div
+  (click)="toggleDetail()"
+  class="crm-case-from-header">
+  <!-- arrow -->
+  <app-icon-arrow-up *ngIf="opened"></app-icon-arrow-up>
+  <app-icon-arrow-down *ngIf="!opened"></app-icon-arrow-down>
+
+  <!-- titles -->
+  <div class="crm-case-from-titles">
+    <!-- title -->
+    <div class="crm-case-from-title">
+      {{data.planNumber}} {{data.planName}}
+    </div>
+
+    <!-- sub title -->
+    <div class="crm-case-from-sub-title">
+      Plan to Plan
+    </div>
+  </div>
+</div>
+
+<!-- footer -->
+<div
+  *ngIf="opened"
+  class="crm-case-from-content">
+  <!-- checkboxes -->
+  <!-- npi -->
+  <app-field-checkbox
+    (click)="onFieldChecked('planNumber')"
+    [checked]="checked.planNumber">
+    Plan Number: {{data.planNumber}}
+  </app-field-checkbox>
+
+  <!-- state -->
+  <app-field-checkbox
+    (click)="onFieldChecked('planName')"
+    [checked]="checked.planName">
+    Plan Name: {{data.planName}}
+  </app-field-checkbox>
+</div>

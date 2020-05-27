@@ -1,0 +1,42 @@
+@import "../../../../styles/mixins";
+@import "../../../../styles/colors";
+
+:host {
+  @include padding(0 48px);
+  display: block;
+  background-color: $deep-sky-blue;
+}
+
+// back button
+app-icon-chevron-left {
+  cursor: pointer;
+  margin-right: 14px;
+  outline: 0;
+
+  &:hover {
+    opacity: .8;
+  }
+}
+
+// crm header title
+.crm-title {
+  @include flex(center);
+  @include padding(16px 0 13.5px);
+}
+
+// title label
+.crm-title-label {
+  @include openSansRegular;
+  line-height: 24px;
+  font-size: 20px;
+  color: rgba($white, .87);
+}
+
+.crm-header-fields {
+  @include paddingBottom(26px);
+}
+
+// input field
+app-input-field {
+  width: calc((100% - 20px) / 2);
+}

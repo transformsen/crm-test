@@ -1,0 +1,12 @@
+<!-- header -->
+<app-header
+  [disabled]="true"
+  previousRoute="/case-about"></app-header>
+
+<!-- main content -->
+<div class="crm-main-content">
+  <!-- case about -->
+  <app-basic-case-about-item
+    [type]="caseAboutType"
+    [data]="caseAbout"></app-basic-case-about-item>
+</div>

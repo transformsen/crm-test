@@ -1,0 +1,39 @@
+<ng-container
+  *ngIf="memberValidation">
+  <!-- member validation -->
+  <app-basic-member-validation
+    [caseAboutType]="caseAboutType"
+    [caseAbout]="caseAbout"
+    [caseFromType]="caseFromType"
+    [caseFrom]="caseFrom"></app-basic-member-validation>
+</ng-container>
+
+<ng-container
+  *ngIf="providerValidation">
+  <!-- provider validation -->
+  <app-basic-provider-validation
+    [caseAboutType]="caseAboutType"
+    [caseAbout]="caseAbout"
+    [caseFromType]="caseFromType"
+    [caseFrom]="caseFrom"></app-basic-provider-validation>
+</ng-container>
+
+<ng-container
+  *ngIf="singleAboutValidation">
+  <!-- single case about validation -->
+  <app-basic-single-about-validation
+    [caseAboutType]="caseAboutType"
+    [caseAbout]="caseAbout"
+    [caseFromType]="caseFromType"
+    [caseFrom]="caseFrom"></app-basic-single-about-validation>
+</ng-container>
+
+<ng-container
+  *ngIf="singleFromValidation">
+  <!-- single case from validation -->
+  <app-basic-single-from-validation
+    [caseAboutType]="caseAboutType"
+    [caseAbout]="caseAbout"
+    [caseFromType]="caseFromType"
+    [caseFrom]="caseFrom"></app-basic-single-from-validation>
+</ng-container>

@@ -1,0 +1,43 @@
+@import "~@angular/material/theming";
+@import "colors";
+
+// set jade theme
+@mixin crmJadeTheme {
+  $crm-jade: (
+    50: $jade,
+    100: $jade,
+    200: $jade,
+    300: $jade,
+    400: $jade,
+    500: $jade,
+    600: $jade,
+    700: $jade,
+    800: $jade,
+    900: $jade,
+    A100: $jade,
+    A200: $jade,
+    A400: $jade,
+    A700: $jade,
+    contrast: (
+      50: $dark-primary-text,
+      100: $dark-primary-text,
+      200: $dark-primary-text,
+      300: $light-primary-text,
+      400: $light-primary-text,
+      500: $light-primary-text,
+      600: $light-primary-text,
+      700: $light-primary-text,
+      800: $light-primary-text,
+      900: $light-primary-text,
+      A100: $dark-primary-text,
+      A200: $light-primary-text,
+      A400: $light-primary-text,
+      A700: $light-primary-text,
+    )
+  );
+
+  $crm-jade-primary: mat-palette($crm-jade);
+  $crm-jade-theme: mat-light-theme($crm-jade-primary, $mat-pink);
+
+  @include angular-material-theme($crm-jade-theme);
+}

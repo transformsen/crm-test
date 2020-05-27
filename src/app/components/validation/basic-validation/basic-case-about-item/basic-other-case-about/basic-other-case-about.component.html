@@ -1,0 +1,27 @@
+<!-- header -->
+<div class="crm-case-about-header">
+  <!-- titles -->
+  <div class="crm-case-about-titles">
+    <!-- title -->
+    <div class="crm-case-about-title">
+      Other
+    </div>
+  </div>
+</div>
+
+<!-- footer -->
+<div
+  class="crm-case-about-footer">
+  <!-- fields -->
+  <div class="crm-case-about-fields">
+    <!-- first name -->
+    <div
+      *ngIf="data.information"
+      class="crm-case-about-field">
+      Information: {{data.information}}
+    </div>
+  </div>
+
+  <!-- create button -->
+  <app-create-case-button></app-create-case-button>
+</div>

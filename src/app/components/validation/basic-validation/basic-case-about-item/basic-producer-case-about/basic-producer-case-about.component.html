@@ -1,0 +1,69 @@
+<!-- header -->
+<div
+  (click)="toggleDetail()"
+  class="crm-case-about-header">
+  <!-- arrows -->
+  <app-icon-chevron-up *ngIf="opened"></app-icon-chevron-up>
+  <app-icon-chevron-down *ngIf="!opened"></app-icon-chevron-down>
+
+  <!-- titles -->
+  <div class="crm-case-about-titles">
+    <!-- title -->
+    <div class="crm-case-about-title">
+      {{data.npn}}
+    </div>
+
+    <!-- relationship -->
+    <div class="crm-case-about-sub-title">
+      Producer
+    </div>
+  </div>
+</div>
+
+<!-- for opened -->
+<ng-container
+  *ngIf="opened">
+  <!-- content -->
+  <div class="crm-case-about-content">
+    <!-- field checkboxes -->
+    <!-- first name -->
+    <app-field-checkbox
+      (click)="onFieldChecked('firstName')"
+      [checked]="checked.firstName">
+      First Name: {{data.firstName}}
+    </app-field-checkbox>
+
+    <!-- last name -->
+    <app-field-checkbox
+      (click)="onFieldChecked('lastName')"
+      [checked]="checked.lastName">
+      Last Name: {{data.lastName}}
+    </app-field-checkbox>
+
+    <!-- npn -->
+    <app-field-checkbox
+      (click)="onFieldChecked('npn')"
+      [checked]="checked.npn">
+      National Producer Number (NPN): {{data.npn}}
+    </app-field-checkbox>
+  </div>
+
+  <!-- footer -->
+  <div class="crm-case-about-footer">
+    <!-- hipaa pathways -->
+    <app-basic-hipaa-pathways
+      (pathwayValidated)="onValidated()"
+      [checked]="checked"
+      [selections]="selections"></app-basic-hipaa-pathways>
+
+    <!-- right -->
+    <div>
+      <!-- create case button -->
+      <app-create-case-button
+        [disabled]="!pathwayValid"></app-create-case-button>
+
+      <!-- hipaa matrix -->
+      <app-hipaa-matrix-button></app-hipaa-matrix-button>
+    </div>
+  </div>
+</ng-container>

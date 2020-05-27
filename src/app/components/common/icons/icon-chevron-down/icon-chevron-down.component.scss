@@ -1,0 +1,10 @@
+@import "src/styles/mixins";
+
+:host {
+  @include flex(center, center);
+  @include box(24px);
+}
+
+svg {
+  display: block;
+}

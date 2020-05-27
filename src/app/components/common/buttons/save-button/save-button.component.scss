@@ -1,0 +1,53 @@
+@import "src/styles/colors";
+@import "src/styles/mixins";
+
+:host {
+  display: inline-block;
+
+  button {
+    &.mat-primary.mat-stroked-button {
+      @include padding(0 12.5px 0 8px);
+      background-color: rgba($light-sky-blue, .12);
+      border-color: $light-sky-blue;
+
+      ::ng-deep {
+        span {
+          @include openSansSemiBold;
+          @include flex(center);
+          color: $deep-sky-blue;
+          font-size: 14px;
+          letter-spacing: 1.3px;
+        }
+      }
+
+      &:disabled {
+        background-color: rgba($black, .12);
+        border-color: rgba($black, .38);
+
+        ::ng-deep {
+          span {
+            color: $white;
+          }
+        }
+
+        app-icon-add {
+          ::ng-deep {
+            path {
+              fill: $white;
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+app-icon-add {
+  margin-right: 7px;
+
+  ::ng-deep {
+    path {
+      fill: $deep-sky-blue;
+    }
+  }
+}

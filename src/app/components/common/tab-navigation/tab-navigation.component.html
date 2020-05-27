@@ -1,0 +1,13 @@
+<!-- navigation -->
+<nav
+  mat-tab-nav-bar>
+  <!-- render tabs -->
+  <a
+    (click)="tabClicked.emit(item.link)"
+    *ngFor="let item of tabs"
+    [routerLink]="item.link"
+    routerLinkActive="active"
+    mat-tab-link>
+    {{item.label | uppercase}}
+  </a>
+</nav>

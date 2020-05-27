@@ -1,0 +1,40 @@
+@import "src/styles/mixins";
+
+:host {
+  display: block;
+}
+
+// main content
+.crm-main-content {
+  @include padding(20px 48px 155px);
+}
+
+// fields
+.crm-case-select,
+.crm-non-wellmark-id {
+  width: calc((100% - 40px) / 3);
+}
+
+// non wellmark id
+.crm-non-wellmark-id {
+  margin: 35px 0 15px;
+}
+
+// search controllers
+app-search-controllers {
+  margin: 20px 0 36px;
+}
+
+// validation button
+app-validation-button {
+  margin-top: 10px;
+}
+
+// validation button for contracted provider
+.crm-contracted-validation-button {
+  margin-top: 36px;
+}
+
+app-continue-button {
+  margin-top: 15px;
+}

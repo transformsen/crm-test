@@ -1,0 +1,14 @@
+<!-- search button -->
+<button
+  (click)="buttonClicked.emit()"
+  [disabled]="disabled"
+  [style.height]="height + 'px'"
+  [style.width]="width + 'px'"
+  color="primary"
+  mat-flat-button>
+  <!-- search icon -->
+  <app-icon-search></app-icon-search>
+
+  <!-- label -->
+  Search
+</button>

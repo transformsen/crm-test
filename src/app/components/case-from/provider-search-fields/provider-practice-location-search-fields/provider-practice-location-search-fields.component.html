@@ -1,0 +1,31 @@
+<!-- search field line -->
+<div
+  class="crm-search-field-line"
+  fxLayout="row"
+  fxLayoutGap="20px">
+  <!-- npi -->
+  <app-npi-field
+    (appValueChange)="onFieldChange('npi', $event)"
+    (entered)="onEntered()"
+    (forceEntered)="onEntered()"
+    [appValue]="fields.npi"
+    class="crm-search-field"></app-npi-field>
+
+  <!-- location name -->
+  <app-name-field
+    (appValueChange)="onFieldChange('practiceLocation', $event)"
+    (entered)="onEntered()"
+    (forceEntered)="onEntered()"
+    [appValue]="fields.practiceLocation"
+    [minLength]="2"
+    class="crm-search-field"
+    label="Practice Location Name"></app-name-field>
+
+  <!-- tax id -->
+  <app-tax-id-field
+    (appValueChange)="onFieldChange('taxId', $event)"
+    (entered)="onEntered()"
+    (forceEntered)="onEntered()"
+    [appValue]="fields.taxId"
+    class="crm-search-field"></app-tax-id-field>
+</div>

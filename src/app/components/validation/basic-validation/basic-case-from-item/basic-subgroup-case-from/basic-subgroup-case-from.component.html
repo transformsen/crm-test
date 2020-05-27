@@ -1,0 +1,70 @@
+<!-- header -->
+<div
+  (click)="toggleDetail()"
+  class="crm-case-from-header">
+  <!-- arrow -->
+  <app-icon-arrow-up *ngIf="opened"></app-icon-arrow-up>
+  <app-icon-arrow-down *ngIf="!opened"></app-icon-arrow-down>
+
+  <!-- titles -->
+  <div class="crm-case-from-titles">
+    <!-- title -->
+    <div class="crm-case-from-title">
+      {{data.subGroupName}}
+    </div>
+
+    <!-- sub title -->
+    <div class="crm-case-from-sub-title">
+      Subgroup
+    </div>
+  </div>
+</div>
+
+<!-- for opened -->
+<ng-container
+  *ngIf="opened">
+  <!-- content -->
+  <div class="crm-case-from-content">
+    <!-- checkboxes -->
+    <!-- group name -->
+    <app-field-checkbox
+      (click)="onFieldChecked('groupName')"
+      [checked]="checked.groupName">
+      Group Name: {{data.groupName}}
+    </app-field-checkbox>
+
+    <!-- group id -->
+    <app-field-checkbox
+      (click)="onFieldChecked('groupId')"
+      [checked]="checked.groupId">
+      Group ID: {{data.groupId}}
+    </app-field-checkbox>
+
+    <!-- group id -->
+    <app-field-checkbox
+     (click)="onFieldChecked('subGroupId')"
+     [checked]="checked.subGroupId">
+     Subgroup ID: {{data.subGroupId}}
+   </app-field-checkbox>
+  </div>
+
+  <!-- footer -->
+  <div class="crm-case-from-footer">
+    <!-- hipaa pathways -->
+    <app-basic-hipaa-pathways
+      (pathwayValidated)="onValidated()"
+      [checked]="checked"
+      [selections]="selections"></app-basic-hipaa-pathways>
+
+    <!-- right -->
+    <div>
+      <!-- create case button -->
+      <app-create-case-button
+        [disabled]="!pathwayValid"></app-create-case-button>
+
+      <!-- hipaa matrix -->
+      <app-hipaa-matrix-button></app-hipaa-matrix-button>
+    </div>
+  </div>
+</ng-container>
+

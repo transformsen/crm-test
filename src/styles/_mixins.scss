@@ -1,0 +1,162 @@
+// set flex container
+@mixin flex($align: null, $justify: null, $direction: null) {
+  display: flex;
+  align-items: $align;
+  justify-content: $justify;
+  flex-direction: $direction;
+  flex-wrap: wrap;
+
+  > * {
+    flex: 0 0 auto;
+  }
+}
+
+// set overflow ellipsis
+@mixin ellipsis {
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
+}
+
+// set top/left/bottom/right positions
+// top left
+@mixin topLeft {
+  top: 0;
+  left: 0;
+}
+
+// top right
+@mixin topRight {
+  top: 0;
+  right: 0;
+}
+
+// bottom left
+@mixin bottomLeft {
+  bottom: 0;
+  left: 0;
+}
+
+// bottom right
+@mixin bottomRight {
+  bottom: 0;
+  right: 0;
+}
+
+// set padding
+// set all padding
+@mixin padding($padding) {
+  box-sizing: border-box;
+  padding: $padding;
+}
+
+// set padding left
+@mixin paddingLeft($padding) {
+  box-sizing: border-box;
+  padding-left: $padding;
+}
+
+// set padding right
+@mixin paddingRight($padding) {
+  box-sizing: border-box;
+  padding-right: $padding;
+}
+
+// set padding top
+@mixin paddingTop($padding) {
+  box-sizing: border-box;
+  padding-top: $padding;
+}
+
+// set padding bottom
+@mixin paddingBottom($padding) {
+  box-sizing: border-box;
+  padding-bottom: $padding;
+}
+
+// set border
+// set all border
+@mixin border($border) {
+  box-sizing: border-box;
+  border: $border;
+}
+
+// set border left
+@mixin borderLeft($border) {
+  box-sizing: border-box;
+  border-left: $border;
+}
+
+// set border right
+@mixin borderRight($border) {
+  box-sizing: border-box;
+  border-right: $border;
+}
+
+// set border top
+@mixin borderTop($border) {
+  box-sizing: border-box;
+  border-top: $border;
+}
+
+// set border bottom
+@mixin borderBottom($border) {
+  box-sizing: border-box;
+  border-bottom: $border;
+}
+
+// create box
+@mixin box($size) {
+  width: $size;
+  height: $size;
+}
+
+// create ball
+@mixin ball($size) {
+  @include box($size);
+  border-radius: 50%;
+}
+
+// set full screen
+@mixin fullScreen {
+  @include box(100%);
+  @include topLeft;
+}
+
+// direction settable mixin
+@mixin direction($direction) {
+  &[tk-direction='#{$direction}'] {
+    @content;
+  }
+}
+
+// appearance settable mixins
+@mixin appearance($appearance) {
+  &[tk-appearance='#{$appearance}'] {
+    @content;
+  }
+}
+
+// regular open sans
+@mixin openSansRegular {
+  font-family: 'Open Sans', sans-serif;
+  font-weight: 400;
+}
+
+// semi bold open sans
+@mixin openSansSemiBold {
+  font-family: 'Open Sans', sans-serif;
+  font-weight: 600;
+}
+
+// bold open sans
+@mixin openSansBold {
+  font-family: 'Open Sans', sans-serif;
+  font-weight: 700;
+}
+
+// roboto regular
+@mixin robotoRegular {
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+  font-weight: 400;
+}

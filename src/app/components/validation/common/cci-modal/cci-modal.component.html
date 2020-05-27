@@ -1,0 +1,17 @@
+<!-- content -->
+<div class="crm-modal-content">
+  <!-- cci item -->
+  <app-cci-modal-item *ngFor="let item of cci">
+    {{item.content}}
+  </app-cci-modal-item>
+</div>
+
+<!-- footer -->
+<div class="crm-modal-footer">
+  <!-- button -->
+  <button
+    (click)="confirmClicked.emit()"
+    mat-button>
+    CONFIRM
+  </button>
+</div>

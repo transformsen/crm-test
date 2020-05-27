@@ -1,0 +1,11 @@
+<!-- save button -->
+<app-save-button
+  (buttonClicked)="saveClicked.emit()"
+  [disabled]="saveDisabled"></app-save-button>
+
+<!-- clear button -->
+<button
+  (click)="clearClicked.emit()"
+  mat-button>
+  CLEAR DATA
+</button>

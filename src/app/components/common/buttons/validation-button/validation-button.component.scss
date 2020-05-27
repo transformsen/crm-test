@@ -1,0 +1,9 @@
+@import "src/styles/mixins";
+
+:host {
+  display: inline-block;
+}
+
+button {
+  @include padding(0 27.5px);
+}

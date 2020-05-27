@@ -1,0 +1,41 @@
+<!-- header -->
+<div class="crm-case-about-header">
+  <!-- titles -->
+  <div class="crm-case-about-titles">
+    <!-- title -->
+    <div class="crm-case-about-title">
+      Prospect
+    </div>
+  </div>
+</div>
+
+<!-- footer -->
+<div
+  class="crm-case-about-footer">
+  <!-- fields -->
+  <div class="crm-case-about-fields">
+    <!-- first name -->
+    <div
+      *ngIf="data.firstName"
+      class="crm-case-about-field">
+      First Name: {{data.firstName}}
+    </div>
+
+    <!-- last name -->
+    <div
+      *ngIf="data.lastName"
+      class="crm-case-about-field">
+      Last Name: {{data.lastName}}
+    </div>
+
+    <!-- ssn -->
+    <div
+      *ngIf="data.ssn"
+      class="crm-case-about-field">
+      Social Security Number: {{data.ssn}}
+    </div>
+  </div>
+
+  <!-- create button -->
+  <app-create-case-button></app-create-case-button>
+</div>

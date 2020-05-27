@@ -1,0 +1,15 @@
+@import "src/styles/mixins";
+
+:host {
+  display: block;
+}
+
+// main content
+.crm-main-content {
+  @include padding(20px 48px 250px);
+}
+
+// divider
+app-div {
+  margin: 20px 0 10px;
+}

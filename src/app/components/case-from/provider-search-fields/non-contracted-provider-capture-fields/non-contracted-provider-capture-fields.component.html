@@ -1,0 +1,20 @@
+<!-- search field line -->
+<div
+  class="crm-search-field-line"
+  fxLayout="row"
+  fxLayoutGap="20px">
+  <!-- npi -->
+  <app-npi-field
+    (appValueChange)="onFieldChange('npi', $event)"
+    (entered)="onEntered()"
+    (forceEntered)="onEntered()"
+    [appValue]="fields.npi"
+    class="crm-search-field"></app-npi-field>
+
+  <!-- state -->
+  <app-state-field
+    (appValueChange)="onFieldChange('state', $event)"
+    [appValue]="fields.state"
+    [error]="stateError"
+    class="crm-search-field"></app-state-field>
+</div>

@@ -1,0 +1,36 @@
+@import "src/styles/mixins";
+
+:host {
+  display: block;
+}
+
+// main content
+.crm-main-content {
+  @include padding(0 48px 225px);
+}
+
+// search type buttons
+app-search-type-buttons {
+  margin: 20px 0;
+}
+
+// search controllers
+app-search-controllers {
+  margin: 33px 0 36px;
+}
+
+// validation / case about button
+app-validation-button,
+app-case-about-button {
+  margin-top: 10px;
+}
+
+// save controllers
+app-save-controllers {
+  margin: 25px 0 10px;
+}
+
+// other table
+app-other-table {
+  margin: 20px 0 10px;
+}

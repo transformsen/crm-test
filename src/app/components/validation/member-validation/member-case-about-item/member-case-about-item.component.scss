@@ -1,0 +1,59 @@
+@import "src/styles/mixins";
+@import "src/styles/colors";
+
+$case-about-border: 1px solid rgba($black, .12);
+
+:host {
+  @include border($case-about-border);
+  border-radius: 4px;
+  display: block;
+}
+
+// header
+.crm-case-about-header {
+  @include padding(0 20px);
+  @include flex(center);
+  height: 116px;
+  cursor: pointer;
+  user-select: none;
+}
+
+// titles wrapper
+.crm-case-about-titles {
+  margin-left: 27px;
+  user-select: text;
+}
+
+// title
+.crm-case-about-title {
+  @include openSansRegular;
+  font-size: 34px;
+  line-height: 36px;
+}
+
+// sub title
+.crm-case-about-sub-title {
+  @include robotoRegular;
+  font-size: 14px;
+  line-height: 20px;
+  color: rgba($black, .6);
+  margin-top: -2px;
+}
+
+// content
+.crm-case-about-content {
+  @include padding(12px 21px 16px);
+  @include borderTop($case-about-border);
+  @include flex(flex-start, null, column);
+}
+
+// footer
+.crm-case-about-footer {
+  @include flex(flex-start, space-between);
+  @include borderTop($case-about-border);
+  @include padding(10px 21px 26px 55px);
+}
+
+app-hipaa-matrix-button {
+  @include padding(12px);
+}

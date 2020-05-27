@@ -1,0 +1,19 @@
+@import "../../../../styles/mixins";
+
+:host {
+  display: block;
+}
+
+// main content
+.crm-main-content {
+  @include padding(0 48px 67px);
+}
+
+// divider
+app-div {
+  margin: 15px 0 10px;
+}
+
+app-cci-button {
+  margin-top: 20px;
+}

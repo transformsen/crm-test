@@ -1,0 +1,27 @@
+<!-- content title -->
+<app-content-title>
+  Caller Details
+</app-content-title>
+
+<!-- selects -->
+<div
+  fxLayout="row"
+  fxLayoutGap="20px"
+  class="crm-caller-detail-selects">
+  <!-- caller -->
+  <app-select-field
+    (appValueChange)="onCallerChange($event)"
+    [appValue]="caller"
+    [error]="callerError"
+    [options]="callerOptions"
+    label="Caller is a..."></app-select-field>
+
+  <!-- relationship -->
+  <app-select-field
+    *ngIf="caller !== 'poa'"
+    (appValueChange)="onRelationshipChange($event)"
+    [appValue]="relationship"
+    [error]="relationshipError"
+    [options]="relationshipOptions[caller] || []"
+    label="Relationship to Policyholder"></app-select-field>
+</div>

@@ -1,0 +1,63 @@
+@import "src/styles/mixins";
+@import "src/styles/colors";
+
+// local variables
+$paginator-size-dropdown-font-size: 12px;
+$paginator-size-dropdown-gap: 5px;
+
+:host {
+  user-select: none;
+}
+
+// paginator arrow
+.crm-paginator-arrow {
+  @include flex(center, center);
+  @include box(24px);
+  cursor: pointer;
+
+  ::ng-deep {
+    path {
+      fill: $grey;
+    }
+  }
+
+  &.disabled {
+    opacity: .3;
+  }
+
+  &:not(.disabled):hover {
+    opacity: .6;
+  }
+}
+
+// paginator size dropdown
+.crm-paginator-size-dropdown {
+  @include flex(center);
+  font-size: $paginator-size-dropdown-font-size;
+  color: $grey;
+  flex-wrap: nowrap;
+
+  label {
+    margin-right: 8px;
+  }
+
+  mat-form-field {
+    width: 56px;
+    height: 39.63px;
+
+    ::ng-deep {
+      .mat-form-field-flex {
+        height: 100%;
+      }
+
+      .mat-form-field-infix {
+        border-top-width: 4px;
+      }
+
+      // value font size
+      .mat-select-value-text {
+        font-size: 12px;
+      }
+    }
+  }
+}

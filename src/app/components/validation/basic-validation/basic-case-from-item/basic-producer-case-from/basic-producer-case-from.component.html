@@ -1,0 +1,50 @@
+<!-- header -->
+<div
+  (click)="toggleDetail()"
+  class="crm-case-from-header">
+  <!-- arrow -->
+  <app-icon-arrow-up *ngIf="opened"></app-icon-arrow-up>
+  <app-icon-arrow-down *ngIf="!opened"></app-icon-arrow-down>
+
+  <!-- titles -->
+  <div class="crm-case-from-titles">
+    <!-- title -->
+    <div class="crm-case-from-title">
+      {{data.firstName}}
+    </div>
+
+    <!-- sub title -->
+    <div class="crm-case-from-sub-title">
+      First Name
+    </div>
+  </div>
+</div>
+
+<!-- for opened -->
+<ng-container
+  *ngIf="opened">
+  <!-- content -->
+  <div class="crm-case-from-content">
+    <!-- checkboxes -->
+    <!-- first name -->
+    <app-field-checkbox
+      (click)="onFieldChecked('firstName')"
+      [checked]="checked.firstName">
+      First Name: {{data.firstName}}
+    </app-field-checkbox>
+
+    <!-- producer organization id -->
+    <app-field-checkbox
+      (click)="onFieldChecked('lastName')"
+      [checked]="checked.lastName">
+      Last Name: {{data.lastName}}
+    </app-field-checkbox>
+    
+    <app-field-checkbox
+    (click)="onFieldChecked('npn')"
+    [checked]="checked.npn">
+    National Producer Number (NPN): {{data.npn}}
+    </app-field-checkbox>
+  </div>
+</ng-container>
+

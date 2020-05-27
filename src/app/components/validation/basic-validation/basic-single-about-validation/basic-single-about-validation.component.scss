@@ -1,0 +1,19 @@
+@import "src/styles/mixins";
+
+:host {
+  display: block;
+}
+
+// content title
+app-content-title {
+  margin-bottom: 10px;
+}
+
+// divider
+app-div {
+  margin: 20px 0 10px;
+}
+
+.crm-main-content {
+  @include padding(20px 48px 200px);
+}

@@ -1,0 +1,13 @@
+@import "src/styles/mixins";
+@import "src/styles/colors";
+
+:host {
+  @include openSansRegular;
+  @include padding(0 16px);
+  position: relative;
+  display: inline-block;
+  font-size: 12px;
+  line-height: 16px;
+  top: 3px;
+  color: $red-orange;
+}

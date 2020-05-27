@@ -1,0 +1,137 @@
+@import "../../../../../styles/mixins";
+@import "../../../../../styles/colors";
+
+:host {
+  display: block;
+
+  // white theme
+  &.crm-input-field-white-theme {
+    mat-form-field {
+      ::ng-deep {
+        // border color
+        .mat-form-field-outline {
+          [class*='mat-form-field-outline-'] {
+            border-color: rgba($white, .87);
+          }
+        }
+      }
+
+      ::ng-deep {
+        // border style
+        [class*='mat-form-field-outline-'] {
+          border-color: rgba($white, .87);
+        }
+      }
+
+      &.mat-form-field-should-float {
+        ::ng-deep {
+          .mat-form-field-outline-gap {
+            border-top-color: transparent;
+          }
+        }
+      }
+
+      mat-label, input {
+        color: rgba($white, .87);
+      }
+
+      input {
+        caret-color: $white;
+      }
+    }
+  }
+
+  &.error {
+    mat-form-field {
+      mat-label {
+        color: $red-orange;
+      }
+
+      ::ng-deep {
+        // border color
+        .mat-form-field-outline {
+          [class*='mat-form-field-outline-'] {
+            border-color: $red-orange;
+          }
+        }
+      }
+
+      // border top of value selected field's outline gap
+      &.mat-form-field-should-float {
+        ::ng-deep {
+          .mat-form-field-outline {
+            .mat-form-field-outline-gap {
+              border-top-color: transparent;
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+// form field
+mat-form-field {
+  display: block;
+  width: 100%;
+
+  ::ng-deep {
+    .mat-form-field-subscript-wrapper {
+      @include padding(0 16px);
+      position: relative;
+      top: 3px;
+    }
+  }
+
+  &.mat-form-field-should-float {
+    mat-label {
+      color: rgba($black, .74);
+    }
+  }
+
+  ::ng-deep {
+    // border color
+    .mat-form-field-outline:not(.mat-form-field-outline-thick) {
+      [class*='mat-form-field-outline-'] {
+        border-color: $nobel;
+      }
+    }
+  }
+
+  // border top of value selected field's outline gap
+  &.mat-form-field-should-float {
+    ::ng-deep {
+      .mat-form-field-outline:not(.mat-form-field-outline-thick) {
+        .mat-form-field-outline-gap {
+          border-top-color: transparent;
+        }
+      }
+    }
+  }
+}
+
+// label style
+mat-label {
+  @include openSansSemiBold;
+  font-size: 16px;
+  color: rgba($black, .38);
+}
+
+// input style
+input {
+  @include openSansBold;
+  font-size: 16px;
+}
+
+// hint style
+mat-hint {
+  @include openSansRegular;
+  font-size: 12px;
+  line-height: 16px;
+  color: rgba($black, .6);
+}
+
+// field error
+app-field-error {
+  display: block;
+}

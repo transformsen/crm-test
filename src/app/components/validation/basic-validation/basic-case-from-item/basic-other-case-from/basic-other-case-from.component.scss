@@ -1,0 +1,23 @@
+@import "src/styles/mixins";
+@import "src/styles/colors";
+
+:host {
+  .crm-case-from-header {
+    height: 86px;
+  }
+
+  .crm-case-from-titles {
+    margin-left: 0;
+  }
+
+  .crm-case-from-footer {
+    padding-left: 20px;
+  }
+}
+
+.crm-case-from-field {
+  @include openSansSemiBold;
+  font-size: 16px;
+  line-height: 24px;
+  color: $jade2;
+}

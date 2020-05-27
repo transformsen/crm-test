@@ -1,0 +1,28 @@
+<!-- use table to display -->
+<app-table
+  (pagingChanged)="pagingChanged.emit($event)"
+  (rowSelected)="rowSelected.emit($event)"
+  [columns]="columns"
+  [page]="page"
+  [rows]="rows"
+  [size]="size"
+  [total]="total">
+  <!-- custom body cell for dates -->
+  <!-- termination date -->
+  <ng-template
+    appCustomBodyCell
+    columnProperty="terminationDate"
+    let-column="column"
+    let-row="row">
+    {{(row.data | tableRowData: column.property) | date: 'MM/dd/yyyy'}}
+  </ng-template>
+
+  <!-- future effective date -->
+  <ng-template
+    appCustomBodyCell
+    columnProperty="futureEffectiveDate"
+    let-column="column"
+    let-row="row">
+    {{(row.data | tableRowData: column.property) | date: 'MM/dd/yyyy'}}
+  </ng-template>
+</app-table>

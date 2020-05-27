@@ -1,0 +1,11 @@
+<!-- search button -->
+<app-search-button
+  [disabled]="searchDisabled"
+  (buttonClicked)="searchClicked.emit()"></app-search-button>
+
+<!-- clear button -->
+<button
+  (click)="clearClicked.emit()"
+  mat-button>
+  CLEAR SEARCH
+</button>

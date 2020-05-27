@@ -1,0 +1,62 @@
+<!-- header -->
+<div
+  (click)="toggleDetail()"
+  class="crm-case-about-header">
+  <!-- arrows -->
+  <app-icon-chevron-up *ngIf="opened"></app-icon-chevron-up>
+  <app-icon-chevron-down *ngIf="!opened"></app-icon-chevron-down>
+
+  <!-- titles -->
+  <div class="crm-case-about-titles">
+    <!-- title -->
+    <div class="crm-case-about-title">
+      {{data.npi}}
+    </div>
+
+    <!-- relationship -->
+    <div class="crm-case-about-sub-title">
+      Contracted Provider
+    </div>
+  </div>
+</div>
+
+<!-- for opened -->
+<ng-container
+  *ngIf="opened">
+  <!-- content -->
+  <div class="crm-case-about-content">
+    <!-- field checkboxes -->
+    <!-- npi -->
+    <app-field-checkbox
+      (click)="onFieldChecked('npi')"
+      [checked]="checked.npi">
+      National Provider Identifier (NPI): {{data.npi}}
+    </app-field-checkbox>
+
+    <!-- state -->
+    <app-field-checkbox
+      (click)="onFieldChecked('state')"
+      [checked]="checked.state">
+      State: {{data.state}}
+    </app-field-checkbox>
+  </div>
+
+  <!-- footer -->
+  <div class="crm-case-about-footer">
+    <!-- hipaa pathways -->
+    <app-basic-hipaa-pathways
+      (pathwayValidated)="onValidated()"
+      [checked]="checked"
+      [selections]="selections"></app-basic-hipaa-pathways>
+
+    <!-- right -->
+    <div>
+      <!-- create case button -->
+      <app-create-case-button
+        [disabled]="!pathwayValid"></app-create-case-button>
+
+      <!-- hipaa matrix -->
+      <app-hipaa-matrix-button></app-hipaa-matrix-button>
+    </div>
+  </div>
+</ng-container>

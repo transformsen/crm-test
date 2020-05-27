@@ -1,0 +1,47 @@
+<!-- search field line -->
+<div
+  class="crm-search-field-line"
+  fxLayout="row"
+  fxLayoutGap="20px">
+  <!-- policy id -->
+  <app-policy-id-field
+    (appValueChange)="onFieldChange('policyId', $event)"
+    (entered)="entered.emit()"
+    [appValue]="fields.policyId"
+    [disabled]="isFieldDisabled('policyId')"
+    class="crm-search-field"
+    hint="Member Search"></app-policy-id-field>
+
+  <!-- npi -->
+  <app-npi-field
+    (appValueChange)="onFieldChange('npi', $event)"
+    (entered)="entered.emit()"
+    [appValue]="fields.npi"
+    [disabled]="isFieldDisabled('npi')"
+    class="crm-search-field"
+    hint="Provider Search"></app-npi-field>
+</div>
+
+<!-- search field line -->
+<div
+  class="crm-search-field-line"
+  fxLayout="row"
+  fxLayoutGap="20px">
+  <!-- npn -->
+  <app-npn-field
+    (appValueChange)="onFieldChange('npn', $event)"
+    (entered)="entered.emit()"
+    [appValue]="fields.npn"
+    [disabled]="isFieldDisabled('npn')"
+    class="crm-search-field"
+    hint="Producer Search"></app-npn-field>
+
+  <!-- plan id / name -->
+  <app-plan-to-plan-field
+    (appValueChange)="onFieldChange('planToPlan', $event)"
+    (entered)="entered.emit()"
+    [appValue]="fields.planToPlan"
+    [disabled]="isFieldDisabled('planToPlan')"
+    hint="Last 3 Digits"
+    class="crm-search-field"></app-plan-to-plan-field>
+</div>

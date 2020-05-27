@@ -1,0 +1,36 @@
+<div
+  class="crm-case-about-fields"
+  fxLayout="row"
+  fxLayoutGap="20px">
+  <!-- id -->
+  <app-input-field
+    (appValueChange)="onFieldChange('id', $event)"
+    [appValue]="fields.id"
+    class="crm-case-about-field"
+    label="ID"></app-input-field>
+
+  <!-- first name -->
+  <app-input-field
+    (appValueChange)="onFieldChange('firstName', $event)"
+    [appValue]="fields.firstName"
+    class="crm-case-about-field"
+    label="First Name"></app-input-field>
+
+  <!-- last name -->
+  <app-input-field
+    (appValueChange)="onFieldChange('lastName', $event)"
+    [appValue]="fields.lastName"
+    class="crm-case-about-field"
+    label="Last Name"></app-input-field>
+</div>
+
+<div
+  class="crm-case-about-fields"
+  fxLayout="row"
+  fxLayoutGap="20px">
+  <!-- ssn -->
+  <app-ssn-field
+    (appValueChange)="onFieldChange('ssn', $event)"
+    [appValue]="fields.ssn"
+    class="crm-case-about-field"></app-ssn-field>
+</div>

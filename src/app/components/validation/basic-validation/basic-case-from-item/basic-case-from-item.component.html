@@ -1,0 +1,75 @@
+<!-- switch by type -->
+<ng-container
+  [ngSwitch]="type">
+  <!-- for provider -->
+  <ng-container
+    *ngSwitchCase="'provider'">
+    <!-- provider item -->
+    <app-basic-provider-case-from
+      [type]="type"
+      [data]="data"></app-basic-provider-case-from>
+  </ng-container>
+
+  <!-- for non contracted provider -->
+  <ng-container
+    *ngSwitchCase="'nonContractedProvider'">
+    <!-- provider item -->
+    <app-basic-provider-case-from
+      [type]="type"
+      [data]="data"></app-basic-provider-case-from>
+  </ng-container>
+
+  <!-- for producer organization -->
+  <ng-container
+    *ngSwitchCase="'producerOrganization'">
+    <!-- producer organization -->
+    <app-basic-producer-organization-case-from
+      [type]="type"
+      [data]="data"></app-basic-producer-organization-case-from>
+  </ng-container>
+
+  <!-- for producer -->
+  <ng-container
+    *ngSwitchCase="'producer'">
+    <!-- producer -->
+    <app-basic-producer-case-from
+      [type]="type"
+      [data]="data"></app-basic-producer-case-from>
+  </ng-container>
+
+  <!-- for group -->
+  <ng-container
+    *ngSwitchCase="'group'">
+    <!-- group -->
+    <app-basic-group-case-from
+      [type]="type"
+      [data]="data"></app-basic-group-case-from>
+  </ng-container>
+
+  <!-- for sub-group -->
+  <ng-container
+    *ngSwitchCase="'subGroup'">
+    <!-- group -->
+    <app-basic-subgroup-case-from
+      [type]="type"
+      [data]="data"></app-basic-subgroup-case-from>
+  </ng-container>
+
+  <!-- for plan to plan -->
+  <ng-container
+    *ngSwitchCase="'planToPlan'">
+    <!-- plan -->
+    <app-basic-plan-case-from
+      [type]="type"
+      [data]="data"></app-basic-plan-case-from>
+  </ng-container>
+
+  <!-- for other -->
+  <ng-container
+    *ngSwitchCase="'other'">
+    <!-- other -->
+    <app-basic-other-case-from
+      [type]="type"
+      [data]="data"></app-basic-other-case-from>
+  </ng-container>
+</ng-container>

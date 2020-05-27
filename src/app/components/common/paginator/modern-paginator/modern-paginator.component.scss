@@ -1,0 +1,24 @@
+@import "src/styles/mixins";
+@import "src/styles/colors";
+
+:host {
+  @include flex(center);
+}
+
+// modern paginator right section
+.crm-modern-paginator-right {
+  @include flex(center);
+}
+
+// current page
+.crm-modern-paginator-current-page {
+  @include flex(center);
+  font-size: 12px;
+  margin: 0 35px;
+  color: $grey;
+}
+
+// arrows wrapper
+.crm-modern-paginator-arrows {
+  @include flex(center);
+}

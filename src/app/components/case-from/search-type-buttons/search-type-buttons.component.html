@@ -1,0 +1,11 @@
+<!-- toggle group -->
+<mat-button-toggle-group
+  [value]="searchType">
+  <!-- button -->
+  <mat-button-toggle
+    *ngFor="let item of types"
+    (click)="onClickButton(item)"
+    [value]="item.value">
+    {{item.label}}
+  </mat-button-toggle>
+</mat-button-toggle-group>

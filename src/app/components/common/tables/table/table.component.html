@@ -1,0 +1,96 @@
+<!-- table header -->
+<div class="crm-table-header">
+  <!-- table title -->
+  <div class="crm-table-title">
+    Search Results
+  </div>
+
+  <!-- table sub title -->
+  <div class="crm-table-sub-title">
+    {{total}} Search Results
+  </div>
+</div>
+
+<!-- table content -->
+<div class="crm-table-content">
+  <!-- table -->
+  <table
+    [dataSource]="rows"
+    mat-table>
+    <!-- column definitions -->
+    <!-- static column -->
+    <ng-container
+      matColumnDef="select">
+      <!-- header cell for select -->
+      <th
+        *matHeaderCellDef
+        mat-header-cell>
+        <!-- info circle with tooltip -->
+        <app-icon-info-circle
+          matTooltip="Select a Row to Continue to Validation"></app-icon-info-circle>
+      </th>
+
+      <!-- body cell for select -->
+      <td
+        *matCellDef="let row"
+        mat-cell>
+        <!-- radio button -->
+        <mat-radio-button
+          (change)="onSelectionChange(row)"
+          [checked]="row.selected"></mat-radio-button>
+      </td>
+    </ng-container>
+
+    <!-- columns with displayableColumns -->
+    <ng-container
+      *ngFor="let column of displayableDataColumns"
+      [matColumnDef]="column.property">
+      <!-- header cell -->
+      <th
+        *matHeaderCellDef
+        mat-header-cell
+        (click)="sort(column)">
+        <!-- label -->
+        {{column.label}}
+      </th>
+
+      <!-- body cell -->
+      <td
+        *matCellDef="let row"
+        mat-cell>
+        <!-- data -->
+        <!-- default body -->
+        <ng-container *ngIf="!customBodyCellsMap[column.property]; else customBody">
+          {{row.data | tableRowData: column.property}}
+        </ng-container>
+
+        <!-- custom body -->
+        <ng-template #customBody>
+          <ng-container
+            *ngTemplateOutlet="customBodyCellsMap[column.property].templateRef; context: {row: row, column: column}"></ng-container>
+        </ng-template>
+      </td>
+    </ng-container>
+
+    <!-- rows definitions -->
+    <!-- header row -->
+    <tr
+      *matHeaderRowDef="displayableColumnProperties"
+      mat-header-row></tr>
+
+    <!-- body row -->
+    <tr
+      *matRowDef="let row; columns: displayableColumnProperties;"
+      mat-row></tr>
+  </table>
+</div>
+
+<!-- table footer -->
+<div class="crm-table-footer">
+  <!-- paginator -->
+  <app-modern-paginator
+    (pagingChange)="pagingChanged.emit($event)"
+    [page]="page"
+    [size]="size"
+    [total]="total"></app-modern-paginator>
+</div>

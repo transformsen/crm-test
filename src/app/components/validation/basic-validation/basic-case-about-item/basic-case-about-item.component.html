@@ -1,0 +1,63 @@
+<!-- switch by type -->
+<ng-container
+  [ngSwitch]="type">
+  <!-- member -->
+  <app-basic-member-case-about
+    *ngSwitchCase="'member'"
+    [type]="type"
+    [data]="data"></app-basic-member-case-about>
+
+  <!-- non member -->
+  <app-basic-non-member-case-about
+    *ngSwitchCase="'nonMember'"
+    [type]="type"
+    [data]="data"></app-basic-non-member-case-about>
+
+  <!-- contracted provider -->
+  <app-basic-contracted-provider-case-about
+    *ngSwitchCase="'contractedProvider'"
+    [type]="type"
+    [data]="data"></app-basic-contracted-provider-case-about>
+
+  <!-- non contracted provider -->
+  <app-basic-non-contracted-provider-case-about
+    *ngSwitchCase="'nonContractedProvider'"
+    [type]="type"
+    [data]="data"></app-basic-non-contracted-provider-case-about>
+
+  <!-- provider practice location -->
+  <app-provider-practice-location-case-about
+    *ngSwitchCase="'providerPracticeLocation'"
+    [type]="type"
+    [data]="data"></app-provider-practice-location-case-about>
+
+  <!-- producer -->
+  <app-basic-producer-case-about
+    *ngSwitchCase="'producer'"
+    [type]="type"
+    [data]="data"></app-basic-producer-case-about>
+
+  <!-- subgroup -->
+  <app-basic-subgroup-case-about
+    *ngSwitchCase="'subGroup'"
+    [type]="type"
+    [data]="data"></app-basic-subgroup-case-about>
+
+  <!-- blue card -->
+  <app-basic-blue-card-case-about
+    *ngSwitchCase="'blueCard'"
+    [type]="type"
+    [data]="data"></app-basic-blue-card-case-about>
+
+  <!-- prospect -->
+  <app-basic-prospect-case-about
+    *ngSwitchCase="'prospect'"
+    [type]="type"
+    [data]="data"></app-basic-prospect-case-about>
+
+  <!-- other -->
+  <app-basic-other-case-about
+    *ngSwitchCase="'other'"
+    [type]="type"
+    [data]="data"></app-basic-other-case-about>
+</ng-container>

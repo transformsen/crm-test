@@ -1,0 +1,132 @@
+<!-- header -->
+<app-header
+  [disabled]="true"></app-header>
+
+<!-- navigation -->
+<app-tab-navigation></app-tab-navigation>
+
+<!-- main content -->
+<div class="crm-main-content">
+  <!-- case about -->
+  <app-select-field
+    (appValueChange)="onCaseAboutChange($event)"
+    [appValue]="searchType"
+    [options]="options"
+    class="crm-case-select"
+    label="Who is the case about?"></app-select-field>
+
+  <!-- switch by case about type -->
+  <ng-container
+    [ngSwitch]="type">
+    <!-- default type -->
+    <ng-container
+      *ngSwitchCase="'default'">
+      <!-- display fields according to case about -->
+      <ng-container
+        [ngSwitch]="searchType">
+        <!-- member search -->
+        <ng-container *ngSwitchCase="'member'">
+          <!-- member search fields -->
+          <app-member-search-fields
+            (entered)="onSearchClicked()"
+            [fields]="fields"></app-member-search-fields>
+        </ng-container>
+      </ng-container>
+
+      <!-- display content according to search type -->
+      <ng-container [ngSwitch]="searchType">
+        <!-- for member -->
+        <ng-container
+          *ngSwitchCase="'member'">
+          <!-- search controllers -->
+          <app-search-controllers
+            (clearClicked)="onClearClicked()"
+            (searchClicked)="onSearchClicked(0, size, true)"
+            [searchDisabled]="searchDisabled"></app-search-controllers>
+
+          <!-- result table -->
+          <ng-container
+            *ngIf="data && data.length > 0">
+            <!-- member table -->
+            <app-member-table
+              (pagingChanged)="onMemberPagingChanged($event)"
+              (rowSelected)="onMemberRowSelected($event.data)"
+              [data]="data"
+              [page]="page"
+              [selectedRow]="selectedMember"
+              [size]="size"
+              [total]="total"></app-member-table>
+
+            <!-- validation button -->
+            <app-validation-button
+              (buttonClicked)="onValidationClicked()"
+              [disabled]="!selectedMember"></app-validation-button>
+          </ng-container>
+        </ng-container>
+
+        <!-- for non member -->
+        <ng-container
+          *ngSwitchCase="'nonMember'">
+          <!-- non member id -->
+          <app-input-field
+            (appValueChange)="onNonMemberIdChange($event)"
+            [appValue]="nonMemberId"
+            class="crm-non-wellmark-id"
+            label="Non-Wellmark ID"></app-input-field>
+
+          <!-- validation button -->
+          <app-validation-button
+            (buttonClicked)="onValidationClicked()"
+            [disabled]="!hasNonMemberId"></app-validation-button>
+        </ng-container>
+
+        <!-- for default -->
+        <ng-container
+          *ngSwitchDefault>
+          <!-- validation button -->
+          <app-validation-button
+            (buttonClicked)="onValidationClicked()"
+            class="crm-contracted-validation-button"></app-validation-button>
+        </ng-container>
+      </ng-container>
+    </ng-container>
+
+    <!-- other -->
+    <ng-container
+      *ngSwitchCase="'other'">
+      <!-- switch by search type -->
+      <ng-container
+        [ngSwitch]="searchType">
+        <!-- prospect -->
+        <ng-container *ngSwitchCase="'prospect'">
+          <!-- prospect input fields -->
+          <app-prospect-input-fields
+            (entered)="onEnteredOther()"
+            [fields]="fields"></app-prospect-input-fields>
+        </ng-container>
+
+        <!-- blue card -->
+        <ng-container *ngSwitchCase="'blueCard'">
+          <!-- blue card input fields -->
+          <app-blue-card-input-fields
+            (entered)="onEnteredOther()"
+            [fields]="fields"></app-blue-card-input-fields>
+        </ng-container>
+
+        <!-- other -->
+        <ng-container *ngSwitchCase="'other'">
+          <!-- other input fields -->
+          <app-other-input-fields
+            (entered)="onEnteredOther()"
+            [fields]="fields"></app-other-input-fields>
+        </ng-container>
+      </ng-container>
+
+      <ng-container *ngIf="searchType !== null">
+        <!-- continue button -->
+        <app-continue-button
+          (buttonClicked)="onEnteredOther()"></app-continue-button>
+      </ng-container>
+    </ng-container>
+  </ng-container>
+</div>

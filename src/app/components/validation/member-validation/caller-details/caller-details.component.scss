@@ -1,0 +1,15 @@
+:host {
+  display: block;
+}
+
+// content title
+app-content-title {
+  margin: 20px 0 7px;
+}
+
+// selects wrapper
+.crm-caller-detail-selects {
+  app-select-field {
+    width: calc((100% - 20px) / 2);
+  }
+}

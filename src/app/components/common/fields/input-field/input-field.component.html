@@ -1,0 +1,32 @@
+<!-- form field -->
+<mat-form-field
+  appearance="outline">
+  <!-- label -->
+  <mat-label
+    *ngIf="label">
+    {{label}}
+  </mat-label>
+
+  <!-- input -->
+  <input
+    #input
+    (keydown.enter)="entered.emit(appValue)"
+    (ngModelChange)="onValueChange($event)"
+    [disabled]="disabled"
+    [maxlength]="max"
+    [ngModel]="appValue"
+    autocomplete="off"
+    matInput
+    spellcheck="false"/>
+
+  <!-- hint -->
+  <mat-hint
+    *ngIf="hint && !error">
+    {{hint}}
+  </mat-hint>
+</mat-form-field>
+
+<!-- error message -->
+<app-field-error *ngIf="error">
+  {{error}}
+</app-field-error>

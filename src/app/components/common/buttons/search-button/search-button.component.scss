@@ -1,0 +1,21 @@
+@import "../../../../../styles/mixins";
+@import "../../../../../styles/colors";
+
+:host {
+  display: inline-block;
+}
+
+button {
+  @include padding(0 12.5px 0 8px);
+
+  ::ng-deep {
+    span {
+      @include flex(center, center);
+    }
+  }
+}
+
+// search icon
+app-icon-search {
+  margin-right: 8.5px;
+}

@@ -1,0 +1,30 @@
+<!-- header -->
+<app-header
+  [disabled]="true"
+  previousRoute="/case-about"></app-header>
+
+<!-- main content -->
+<div class="crm-main-content">
+  <!-- content title -->
+  <app-content-title>
+    Case From
+  </app-content-title>
+
+  <!-- case from -->
+  <app-basic-case-from-item
+    [type]="caseFromType"
+    [data]="caseFrom"></app-basic-case-from-item>
+
+  <!-- divider -->
+  <app-div></app-div>
+
+  <!-- content title -->
+  <app-content-title>
+    Case About
+  </app-content-title>
+
+  <!-- case about -->
+  <app-basic-case-about-item
+    [type]="caseAboutType"
+    [data]="caseAbout"></app-basic-case-about-item>
+</div>

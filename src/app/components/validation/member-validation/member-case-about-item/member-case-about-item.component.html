@@ -1,0 +1,129 @@
+<!-- load when member is exists -->
+<ng-container *ngIf="data">
+  <!-- case about header -->
+  <div
+    (click)="toggleDetail()"
+    class="crm-case-about-header">
+    <!-- icons -->
+    <!-- up -->
+    <ng-container *ngIf="opened; else down">
+      <app-icon-chevron-up></app-icon-chevron-up>
+    </ng-container>
+
+    <!-- down -->
+    <ng-template #down>
+      <app-icon-chevron-down></app-icon-chevron-down>
+    </ng-template>
+
+    <!-- titles -->
+    <div class="crm-case-about-titles">
+      <!-- title -->
+      <div class="crm-case-about-title">
+        {{data.firstName}} {{data.lastName}}
+      </div>
+
+      <!-- sub title -->
+      <div class="crm-case-about-sub-title">
+        {{data.relationship}}
+      </div>
+    </div>
+  </div>
+
+  <!-- for opened -->
+  <ng-container
+    *ngIf="opened">
+    <!-- content -->
+    <div class="crm-case-about-content">
+      <!-- field checkboxes -->
+      <!-- first name -->
+      <app-field-checkbox
+        (click)="onClickCheckbox('firstName')"
+        [checked]="checked.firstName">
+        First Name: {{data.firstName}}
+      </app-field-checkbox>
+
+      <!-- last name -->
+      <app-field-checkbox
+        (click)="onClickCheckbox('lastName')"
+        [checked]="checked.lastName">
+        Last Name: {{data.lastName}}
+      </app-field-checkbox>
+
+      <!-- relationship -->
+      <app-field-checkbox
+        (click)="onClickCheckbox('relationship')"
+        [checked]="checked.relationship">
+        Relationship: {{data.relationship}}
+      </app-field-checkbox>
+
+      <!-- policy id -->
+      <app-field-checkbox
+        (click)="onClickCheckbox('policyId')"
+        [checked]="checked.policyId">
+        Policy ID: {{data.policyId}}
+      </app-field-checkbox>
+
+      <!-- ssn -->
+      <div
+        fxLayout="row"
+        fxLayoutGap="18px">
+        <!-- first 5 ssn -->
+        <app-field-checkbox
+          (click)="onClickCheckbox('ssn')"
+          [checked]="checked.ssn">
+          SSN: 123 - 45 -
+        </app-field-checkbox>
+
+        <!-- last 4 ssn -->
+        <app-field-checkbox
+          (click)="onClickCheckbox('last4ssn')"
+          [checked]="checked.last4ssn">
+          6789
+        </app-field-checkbox>
+      </div>
+
+      <!-- date of birth -->
+      <app-field-checkbox
+        (click)="onClickCheckbox('dateOfBirth')"
+        [checked]="checked.dateOfBirth">
+        DOB: 01/15/1986
+      </app-field-checkbox>
+
+      <!-- address -->
+      <app-field-checkbox
+        (click)="onClickCheckbox('address')"
+        [checked]="checked.address">
+        Address: {{data.address1}}<br/>
+        <!-- address line 2 should be displayed when existing -->
+        <ng-container
+          *ngIf="data.address2 && data.address2 !== '---'">
+          {{data.address2}}<br/>
+        </ng-container>
+        {{data.city}}<br/>
+        {{data.state}}<br/>
+        {{data.zip}}<br/>
+      </app-field-checkbox>
+    </div>
+
+    <!-- footer -->
+    <div class="crm-case-about-footer">
+      <!-- hipaa pathways -->
+      <app-member-validation-hipaa-pathway
+        (pathwayValidated)="onPathwayValidated()"
+        [caller]="caller"
+        [checked]="checked"
+        [selections]="selections"
+        [relationship]="relationship"></app-member-validation-hipaa-pathway>
+
+      <!-- right -->
+      <div>
+        <!-- create case button -->
+        <app-create-case-button
+          [disabled]="!pathwayValid"></app-create-case-button>
+
+        <!-- hipaa matrix -->
+        <app-hipaa-matrix-button></app-hipaa-matrix-button>
+      </div>
+    </div>
+  </ng-container>
+</ng-container>

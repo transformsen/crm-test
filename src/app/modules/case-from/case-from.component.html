@@ -1,0 +1,340 @@
+<!-- header -->
+<app-header
+(entered)="onSearchClicked()"
+></app-header>
+
+<!-- navigation -->
+<app-tab-navigation
+  (tabClicked)="onTabClicked($event)"
+  [tabs]="selectedMember || (selectedProducer && producerType === 'producerOrganization') ? memberTabs : defaultTabs"></app-tab-navigation>
+
+<!-- main content -->
+<div class="crm-main-content">
+  <!-- search type buttons -->
+  <app-search-type-buttons
+    (searchTypeChanged)="onSearchTypeChanged()"></app-search-type-buttons>
+
+  <!-- display search field by search type -->
+  <ng-container
+    [ngSwitch]="searchType">
+    <!-- quick search -->
+    <app-quick-search-fields
+      (entered)="onSearchClicked()"
+      *ngSwitchCase="'quickSearch'"
+      [fields]="fields"></app-quick-search-fields>
+
+    <!-- provider search -->
+    <app-provider-search-fields
+      (entered)="onSearchClicked()"
+      *ngSwitchCase="'provider'"
+      [fields]="fields"></app-provider-search-fields>
+
+    <!-- producer search -->
+    <app-producer-search-fields
+      (entered)="onSearchClicked()"
+      *ngSwitchCase="'producer'"
+      [fields]="fields"></app-producer-search-fields>
+
+    <!-- member search -->
+    <app-member-search-fields
+      *ngSwitchCase="'member'"
+      (entered)="onSearchClicked()"
+      [fields]="fields"
+    ></app-member-search-fields>
+
+    <!-- group search -->
+    <app-group-search-fields
+      (entered)="onSearchClicked()"
+      *ngSwitchCase="'group'"
+      [fields]="fields"></app-group-search-fields>
+
+    <!-- plan to plan search -->
+    <app-plan-to-plan-search-fields
+      (entered)="onSearchClicked()"
+      *ngSwitchCase="'planToPlan'"
+      [fields]="fields"></app-plan-to-plan-search-fields>
+  </ng-container>
+
+  <!-- search controllers -->
+  <app-search-controllers
+    *ngIf="showSearchControllers"
+    (clearClicked)="onClearClicked()"
+    (searchClicked)="checkFieldsValidation() && onSearchClicked()"
+    [searchDisabled]="searchDisabled"></app-search-controllers>
+
+  <!-- case about button for quick search plan to plan-->
+  <app-case-about-button
+    (buttonClicked)="clearPreviousSearchFieldsAndType(); onClickCaseAbout()"
+    *ngIf="searchType === 'quickSearch' && fields['planToPlan']"
+    [disabled]="!selectedPlan"></app-case-about-button>
+
+  <!-- save controller for non contracted provider -->
+  <app-save-controllers
+    (clearClicked)="onClearClicked()"
+    (saveClicked)="checkFieldsValidation() && onNonContractedSaveClick()"
+    *ngIf="searchType === 'provider' && providerType === 'nonContractedProvider'"
+    [saveDisabled]="nonContractedProviderDisabled"></app-save-controllers>
+
+  <!-- show according to search type -->
+  <ng-container
+    [ngSwitch]="searchType">
+    <!-- quick search -->
+    <!-- show table according to search result type -->
+    <ng-container
+      *ngSwitchCase="'quickSearch'"
+      [ngSwitch]="searchResultType">
+      <!-- search result type: member -->
+      <ng-container
+        *ngSwitchCase="'member'">
+        <!-- only show when data is exists -->
+        <ng-container *ngIf="hasData">
+          <!-- member table -->
+          <app-member-table
+            (pagingChanged)="onMemberPagingChanged($event)"
+            (rowSelected)="onMemberRowSelected($event.data)"
+            [data]="data"
+            [page]="page"
+            [selectedRow]="selectedMember"
+            [size]="size"
+            [total]="total"></app-member-table>
+
+          <!-- continue validation button -->
+          <app-validation-button
+            (buttonClicked)="onMemberValidation()"
+            [disabled]="!selectedMember"></app-validation-button>
+        </ng-container>
+      </ng-container>
+
+      <!-- search result type: provider -->
+      <ng-container
+        *ngSwitchCase="'provider'">
+        <!-- only show when data is exists -->
+        <ng-container *ngIf="hasData">
+          <!-- provider table -->
+          <app-provider-table
+            (pagingChanged)="onProviderPagingChanged($event)"
+            (rowSelected)="onProviderRowSelected($event.data)"
+            [data]="data"
+            [page]="page"
+            [selectedRow]="selectedProvider"
+            [size]="size"
+            [total]="total"></app-provider-table>
+
+          <!-- continue case about button -->
+          <app-case-about-button
+            (buttonClicked)="onClickCaseAbout()"
+            [disabled]="!selectedProvider"></app-case-about-button>
+        </ng-container>
+      </ng-container>
+
+      <!-- search result type: producer -->
+      <ng-container
+        *ngSwitchCase="'producer'">
+        <!-- only show when data is exists -->
+        <ng-container *ngIf="hasData">
+          <!-- producer table -->
+          <app-producer-table
+            (pagingChanged)="onProducerPagingChanged($event)"
+            (rowSelected)="onProducerRowSelected($event.data)"
+            [data]="data"
+            [page]="page"
+            [selectedRow]="selectedProducer"
+            [size]="size"
+            [total]="total"></app-producer-table>
+
+          <!-- continue case about button -->
+          <app-case-about-button
+            (buttonClicked)="onClickCaseAbout()"
+            [disabled]="!selectedProducer"></app-case-about-button>
+        </ng-container>
+      </ng-container>
+    </ng-container>
+
+    <!-- plan to plan -->
+    <ng-container
+      *ngSwitchCase="'member'">
+      <!-- only show when data is exists -->
+      <ng-container *ngIf="hasData">
+        <!-- member table -->
+        <app-member-table
+          (pagingChanged)="onMemberPagingChanged($event)"
+          (rowSelected)="onMemberRowSelected($event.data)"
+          (sortChanged)="onSortChange($event)"
+          [data]="data"
+          [page]="page"
+          [selectedRow]="selectedMember"
+          [size]="size"
+          [total]="total"></app-member-table>
+
+        <!-- continue validation button -->
+        <app-validation-button
+          (buttonClicked)="onMemberValidation()"
+          [disabled]="!selectedMember"></app-validation-button>
+        </ng-container>
+     </ng-container>
+
+    <!-- provider -->
+    <ng-container
+      *ngSwitchCase="'provider'"
+      [ngSwitch]="providerType">
+      <!-- contracted provider -->
+      <ng-container
+        *ngSwitchCase="'contractedProvider'">
+        <!-- only show when data exists -->
+        <ng-container
+          *ngIf="data && data.length > 0">
+          <!-- advanced provider table -->
+          <app-advanced-provider-table
+            (pagingChanged)="onProviderSearchSubmitted($event.page, $event.size)"
+            (rowSelected)="onProviderRowSelected($event.data)"
+            [data]="data"
+            [page]="page"
+            [selectedRow]="selectedProvider"
+            [size]="size"
+            [total]="total"></app-advanced-provider-table>
+
+          <!-- continue case about button -->
+          <app-case-about-button
+            (buttonClicked)="onClickCaseAbout()"
+            [disabled]="!selectedProvider"></app-case-about-button>
+        </ng-container>
+      </ng-container>
+
+      <!-- non contracted provider -->
+      <ng-container
+        *ngSwitchCase="'nonContractedProvider'">
+        <!-- continue case about button -->
+        <app-case-about-button
+          (buttonClicked)="onClickCaseAbout()"
+          [disabled]="!selectedProvider"></app-case-about-button>
+      </ng-container>
+
+      <!-- provider practice location -->
+      <ng-container
+        *ngSwitchCase="'providerPracticeLocation'">
+        <!-- only display when data is exists -->
+        <ng-container *ngIf="hasData">
+          <app-provider-location-table
+            (pagingChanged)="onProviderSearchSubmitted($event.page, $event.size)"
+            (rowSelected)="onProviderRowSelected($event.data)"
+            [data]="data"
+            [page]="page"
+            [selectedRow]="selectedProvider"
+            [size]="size"
+            [total]="total"></app-provider-location-table>
+
+          <!-- continue case about button -->
+          <app-case-about-button
+            (buttonClicked)="onClickCaseAbout()"
+            [disabled]="!selectedProvider"></app-case-about-button>
+        </ng-container>
+      </ng-container>
+    </ng-container>
+
+    <!-- producer -->
+    <ng-container
+      *ngSwitchCase="'producer'"
+      [ngSwitch]="producerType">
+      <!-- for default producer search -->
+      <ng-container
+        *ngSwitchCase="'producer'">
+        <!-- only display when data is exists -->
+        <ng-container *ngIf="hasData">
+          <!-- producer table -->
+          <app-producer-table
+            (pagingChanged)="onProducerSearchSubmitted($event.page, $event.size)"
+            (rowSelected)="onProducerRowSelected($event.data)"
+            [data]="data"
+            [page]="page"
+            [selectedRow]="selectedProducer"
+            [size]="size"
+            [total]="total"></app-producer-table>
+
+          <!-- continue case about button -->
+          <app-case-about-button
+            (buttonClicked)="onClickCaseAbout()"
+            [disabled]="!selectedProducer"></app-case-about-button>
+        </ng-container>
+      </ng-container>
+
+      <!-- for producer organization search -->
+      <ng-container
+        *ngSwitchCase="'producerOrganization'">
+        <!-- only display when data is exists -->
+        <ng-container *ngIf="hasData">
+          <app-producer-organization-table
+            (pagingChanged)="onProducerSearchSubmitted($event.page, $event.size)"
+            (rowSelected)="onProducerRowSelected($event.data)"
+            [data]="data"
+            [page]="page"
+            [selectedRow]="selectedProducer"
+            [size]="size"
+            [total]="total"></app-producer-organization-table>
+
+          <!-- continue validation button -->
+          <app-validation-button
+            (buttonClicked)="onClickProducerOrganizationValidation()"
+            [disabled]="!selectedProducer"></app-validation-button>
+        </ng-container>
+      </ng-container>
+    </ng-container>
+
+    <!-- group -->
+    <ng-container
+      *ngSwitchCase="'group'">
+      <!-- only display when data is exists -->
+      <ng-container *ngIf="hasData">
+        <!-- sub group table -->
+        <ng-container
+          *ngIf="searchSubGroup; else groupTable">
+          <app-sub-group-table
+            (pagingChanged)="onGroupSearchSubmitted($event.page, $event.size)"
+            (rowSelected)="onGroupRowSelected($event.data)"
+            [data]="data"
+            [page]="page"
+            [selectedRow]="selectedGroup"
+            [size]="size"
+            [total]="total"></app-sub-group-table>
+        </ng-container>
+
+        <!-- group table -->
+        <ng-template #groupTable>
+          <app-group-table
+            (pagingChanged)="onGroupSearchSubmitted($event.page, $event.size)"
+            (rowSelected)="onGroupRowSelected($event.data)"
+            [data]="data"
+            [page]="page"
+            [selectedRow]="selectedGroup"
+            [size]="size"
+            [total]="total"></app-group-table>
+        </ng-template>
+
+        <!-- continue case about button -->
+        <app-case-about-button
+          (buttonClicked)="onClickCaseAbout()"
+          [disabled]="!selectedGroup"></app-case-about-button>
+      </ng-container>
+    </ng-container>
+
+    <!-- plan to plan -->
+    <ng-container
+      *ngSwitchCase="'planToPlan'">
+      <!-- continue case about button -->
+      <app-case-about-button
+        (buttonClicked)="clearPreviousSearchFieldsAndType(); onClickCaseAbout()"
+        [disabled]="!selectedPlan"></app-case-about-button>
+    </ng-container>
+
+    <!-- other -->
+    <ng-container
+      *ngSwitchCase="'other'">
+      <!-- other table -->
+      <app-other-table></app-other-table>
+
+      <!-- continue case about button -->
+      <app-case-about-button
+        (buttonClicked)="clearPreviousSearchFieldsAndType(); onClickCaseAbout()"
+        [disabled]="!selectedOther"></app-case-about-button>
+    </ng-container>
+  </ng-container>
+</div>

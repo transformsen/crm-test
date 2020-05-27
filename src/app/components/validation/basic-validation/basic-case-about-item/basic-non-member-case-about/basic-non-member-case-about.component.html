@@ -1,0 +1,55 @@
+<!-- header -->
+<div
+  (click)="toggleDetail()"
+  class="crm-case-about-header">
+  <!-- arrows -->
+  <app-icon-chevron-up *ngIf="opened"></app-icon-chevron-up>
+  <app-icon-chevron-down *ngIf="!opened"></app-icon-chevron-down>
+
+  <!-- titles -->
+  <div class="crm-case-about-titles">
+    <!-- title -->
+    <div class="crm-case-about-title">
+      {{data.nonMemberId}}
+    </div>
+
+    <!-- relationship -->
+    <div class="crm-case-about-sub-title">
+      Non-Member
+    </div>
+  </div>
+</div>
+
+<!-- for opened -->
+<ng-container
+  *ngIf="opened">
+  <!-- content -->
+  <div class="crm-case-about-content">
+    <!-- field checkboxes -->
+    <!-- non member id -->
+    <app-field-checkbox
+      (click)="onFieldChecked('nonMemberId')"
+      [checked]="checked.nonMemberId">
+      Non-Wellmark ID: {{data.nonMemberId}}
+    </app-field-checkbox>
+  </div>
+
+  <!-- footer -->
+  <div class="crm-case-about-footer">
+    <!-- hipaa pathways -->
+    <app-basic-hipaa-pathways
+      (pathwayValidated)="onValidated()"
+      [checked]="checked"
+      [selections]="selections"></app-basic-hipaa-pathways>
+
+    <!-- right -->
+    <div>
+      <!-- create case button -->
+      <app-create-case-button
+        [disabled]="!pathwayValid"></app-create-case-button>
+
+      <!-- hipaa matrix -->
+      <app-hipaa-matrix-button></app-hipaa-matrix-button>
+    </div>
+  </div>
+</ng-container>

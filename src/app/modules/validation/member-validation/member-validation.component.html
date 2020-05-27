@@ -1,0 +1,25 @@
+<!-- header -->
+<app-header
+  [disabled]="true"
+  previousRoute="/case-from"></app-header>
+
+<!-- main content -->
+<div class="crm-main-content">
+  <!-- caller details -->
+  <app-caller-details
+    #callerDetails></app-caller-details>
+
+  <!-- div -->
+  <app-div></app-div>
+
+  <!-- case about -->
+  <app-case-about>
+    <app-member-case-about-item
+      (checkDisabled)="callerDetails.showError()"
+      *ngIf="selectedMember"
+      [data]="selectedMember"></app-member-case-about-item>
+  </app-case-about>
+
+  <!-- cci container -->
+  <app-cci-button></app-cci-button>
+</div>

@@ -1,0 +1,56 @@
+<!-- header -->
+<div
+  (click)="toggleDetail()"
+  class="crm-case-from-header">
+  <!-- arrow -->
+  <app-icon-arrow-up *ngIf="opened"></app-icon-arrow-up>
+  <app-icon-arrow-down *ngIf="!opened"></app-icon-arrow-down>
+
+  <!-- titles -->
+  <div class="crm-case-from-titles">
+    <!-- title -->
+    <div class="crm-case-from-title">
+      {{data.npi}}
+    </div>
+
+    <!-- sub title -->
+    <div class="crm-case-from-sub-title">
+      {{displayableType}}
+    </div>
+  </div>
+</div>
+
+<!-- footer -->
+<div
+  *ngIf="opened"
+  class="crm-case-from-content">
+  <!-- checkboxes -->
+  <!-- firstName -->
+  <app-field-checkbox
+    (click)="onFieldChecked('firstName')"
+    [checked]="checked.firstName"
+    *ngIf="type==='provider'">
+    First Name: {{data.firstName}}
+  </app-field-checkbox>
+
+  <!-- lastName -->
+  <app-field-checkbox
+    (click)="onFieldChecked('lastName')"
+    [checked]="checked.lastName"
+    *ngIf="type==='provider'">
+    Last Name: {{data.lastName}}
+  </app-field-checkbox>
+  <!-- npi -->
+  <app-field-checkbox
+    (click)="onFieldChecked('npi')"
+    [checked]="checked.npi">
+    National Provider Identifier (NPI): {{data.npi}}
+  </app-field-checkbox>
+
+  <!-- state -->
+  <app-field-checkbox
+    (click)="onFieldChecked('state')"
+    [checked]="checked.state">
+    State: {{data.state}}
+  </app-field-checkbox>
+</div>

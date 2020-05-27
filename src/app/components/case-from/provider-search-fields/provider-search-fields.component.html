@@ -1,0 +1,31 @@
+<!-- provider type -->
+<app-select-field
+  (appValueChange)="onProviderTypeChange($event)"
+  [appValue]="type"
+  [options]="options"
+  class="crm-search-field"></app-select-field>
+
+<!-- render by type -->
+<ng-container
+  [ngSwitch]="type">
+  <!-- contracted provider -->
+  <app-contracted-provider-search-fields
+    (entered)="entered.emit()"
+    (fieldsChanged)="onFieldsChanged($event)"
+    *ngSwitchCase="'contractedProvider'"
+    [fields]="fields"></app-contracted-provider-search-fields>
+
+  <!-- non contracted provider -->
+  <app-non-contracted-provider-capture-fields
+    (entered)="entered.emit()"
+    (fieldsChanged)="onFieldsChanged($event)"
+    *ngSwitchCase="'nonContractedProvider'"
+    [fields]="fields"></app-non-contracted-provider-capture-fields>
+
+  <!-- provider practice location -->
+  <app-provider-practice-location-search-fields
+    (entered)="entered.emit()"
+    (fieldsChanged)="onFieldsChanged($event)"
+    *ngSwitchCase="'providerPracticeLocation'"
+    [fields]="fields"></app-provider-practice-location-search-fields>
+</ng-container>

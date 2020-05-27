@@ -1,0 +1,27 @@
+<!-- search field line -->
+<div
+  class="crm-search-field-line"
+  fxLayout="row"
+  fxLayoutGap="20px">
+  <!-- organization id -->
+  <app-name-field
+    #orgId
+    (appValueChange)="onFieldChange('orgId', $event)"
+    (entered)="onEntered()"
+    (forceEntered)="onEntered()"
+    [appValue]="fields.orgId"
+    [minLength]="3"
+    class="crm-search-field"
+    label="Organization ID"></app-name-field>
+
+  <!-- organization name -->
+  <app-name-field
+    #orgName
+    (appValueChange)="onFieldChange('orgName', $event)"
+    (entered)="onEntered()"
+    (forceEntered)="onEntered()"
+    [appValue]="fields.orgName"
+    [minLength]="2"
+    class="crm-search-field"
+    label="Organization Name"></app-name-field>
+</div>

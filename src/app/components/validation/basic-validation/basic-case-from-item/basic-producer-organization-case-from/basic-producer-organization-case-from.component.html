@@ -1,0 +1,63 @@
+<!-- header -->
+<div
+  (click)="toggleDetail()"
+  class="crm-case-from-header">
+  <!-- arrow -->
+  <app-icon-arrow-up *ngIf="opened"></app-icon-arrow-up>
+  <app-icon-arrow-down *ngIf="!opened"></app-icon-arrow-down>
+
+  <!-- titles -->
+  <div class="crm-case-from-titles">
+    <!-- title -->
+    <div class="crm-case-from-title">
+      {{data.producerOrgName}}
+    </div>
+
+    <!-- sub title -->
+    <div class="crm-case-from-sub-title">
+      Producer Organization
+    </div>
+  </div>
+</div>
+
+<!-- for opened -->
+<ng-container
+  *ngIf="opened">
+  <!-- content -->
+  <div class="crm-case-from-content">
+    <!-- checkboxes -->
+    <!-- producer organization name -->
+    <app-field-checkbox
+      (click)="onFieldChecked('producerOrgName')"
+      [checked]="checked.producerOrgName">
+      Producer Organization Name: {{data.producerOrgName}}
+    </app-field-checkbox>
+
+    <!-- producer organization id -->
+    <app-field-checkbox
+      (click)="onFieldChecked('producerOrgId')"
+      [checked]="checked.producerOrgId">
+      Producer Organization ID: {{data.producerOrgId}}
+    </app-field-checkbox>
+  </div>
+
+  <!-- footer -->
+  <div class="crm-case-from-footer">
+    <!-- hipaa pathways -->
+    <app-basic-hipaa-pathways
+      (pathwayValidated)="onValidated()"
+      [checked]="checked"
+      [selections]="selections"></app-basic-hipaa-pathways>
+
+    <!-- right -->
+    <div>
+      <!-- create case button -->
+      <app-create-case-button
+        [disabled]="!pathwayValid"></app-create-case-button>
+
+      <!-- hipaa matrix -->
+      <app-hipaa-matrix-button></app-hipaa-matrix-button>
+    </div>
+  </div>
+</ng-container>
+

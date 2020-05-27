@@ -1,0 +1,15 @@
+<mat-form-field
+  color="primary"
+  appearance="outline">
+  <!-- label -->
+  <mat-label>
+    Information
+  </mat-label>
+
+  <!-- text -->
+  <textarea
+    (ngModelChange)="onFieldChange('information', $event)"
+    [ngModel]="fields.information"
+    cdkTextareaAutosize
+    matInput></textarea>
+</mat-form-field>

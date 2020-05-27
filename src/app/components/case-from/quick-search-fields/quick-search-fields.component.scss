@@ -1,0 +1,17 @@
+@import "src/styles/mixins";
+
+:host {
+  display: block;
+}
+
+// search fields line
+.crm-search-field-line {
+  & + .crm-search-field-line {
+    margin-top: 16px;
+  }
+}
+
+// search field
+.crm-search-field {
+  width: calc((100% - 20px) / 2);
+}

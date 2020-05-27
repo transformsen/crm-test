@@ -1,0 +1,33 @@
+<!-- form field -->
+<mat-form-field
+  appearance="outline">
+  <!-- label -->
+  <mat-label *ngIf="label">
+    {{label}}
+  </mat-label>
+
+  <!-- input -->
+  <input
+    (ngModelChange)="onSearch($event)"
+    [ngModel]="search"
+    [disabled]="disabled"
+    [matAutocomplete]="autoComplete"
+    matInput/>
+
+  <!-- hint -->
+  <mat-hint
+    *ngIf="hint && !error">
+    {{hint}}
+  </mat-hint>
+</mat-form-field>
+
+<!-- auto complete -->
+<mat-autocomplete #autoComplete>
+  <!-- options -->
+  <mat-option
+    [value]="item.label"
+    (onSelectionChange)="optionSelected(item)"
+    *ngFor="let item of searchedOptions">
+    {{item.label}}
+  </mat-option>
+</mat-autocomplete>

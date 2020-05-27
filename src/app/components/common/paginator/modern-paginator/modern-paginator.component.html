@@ -1,0 +1,67 @@
+<!-- page size -->
+<div class="crm-paginator-size-dropdown">
+  <label>
+    Items per page:
+  </label>
+
+  <!-- select -->
+  <mat-form-field>
+    <mat-select
+      (valueChange)="emitPageChange(0, $event)"
+      [value]="size">
+      <!-- options -->
+      <mat-option
+        *ngFor="let item of sizeOptions"
+        [value]="item.value">
+        {{item.label}}
+      </mat-option>
+    </mat-select>
+  </mat-form-field>
+</div>
+
+<!-- pages -->
+<div class="crm-modern-paginator-right">
+  <!-- start / end indices -->
+  <div class="crm-modern-paginator-current-page">
+    {{start}} - {{end}} of {{total}}
+  </div>
+
+  <!-- next / prev arrows -->
+  <div class="crm-modern-paginator-arrows">
+    <!-- start -->
+    <div
+      (click)="toStart()"
+      [class.disabled]="page === 0"
+      class="crm-paginator-arrow">
+      <!-- chevron left end -->
+      <app-icon-chevron-left-end></app-icon-chevron-left-end>
+    </div>
+
+    <!-- prev -->
+    <div
+      (click)="toPrev()"
+      [class.disabled]="!hasPrev"
+      class="crm-paginator-arrow">
+      <!-- chevron left -->
+      <app-icon-chevron-left></app-icon-chevron-left>
+    </div>
+
+    <!-- next -->
+    <div
+      (click)="toNext()"
+      [class.disabled]="!hasNext"
+      class="crm-paginator-arrow">
+      <!-- chevron right -->
+      <app-icon-chevron-right></app-icon-chevron-right>
+    </div>
+
+    <!-- end -->
+    <div
+      (click)="toEnd()"
+      [class.disabled]="page === totalPage - 1"
+      class="crm-paginator-arrow">
+      <!-- chevron right end -->
+      <app-icon-chevron-right-end></app-icon-chevron-right-end>
+    </div>
+  </div>
+</div>

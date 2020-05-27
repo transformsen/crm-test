@@ -1,0 +1,69 @@
+<!-- field row -->
+<div
+  class="crm-case-about-fields"
+  fxLayout="row"
+  fxLayoutGap="20px">
+  <!-- policy id -->
+  <app-policy-id-field
+    (appValueChange)="onFieldChange('policyId', $event)"
+    (entered)="onEntered()"
+    (forceEntered)="onEntered()"
+    [appValue]="fields.policyId"
+    class="crm-case-about-field"></app-policy-id-field>
+
+  <!-- first name -->
+  <app-input-field
+    (appValueChange)="onFieldChange('firstName', $event)"
+    (entered)="onEntered()"
+    [appValue]="fields.firstName"
+    class="crm-case-about-field"
+    label="First Name"></app-input-field>
+
+  <!-- last name -->
+  <app-input-field
+    (appValueChange)="onFieldChange('lastName', $event)"
+    (entered)="onEntered()"
+    [appValue]="fields.lastName"
+    class="crm-case-about-field"
+    label="Last Name"></app-input-field>
+</div>
+
+<!-- field row -->
+<div
+  class="crm-case-about-fields"
+  fxLayout="row"
+  fxLayoutGap="20px">
+  <!-- date of birth -->
+  <app-date-of-birth-field
+    (appValueChange)="onFieldChange('dob', $event)"
+    (entered)="onEntered()"
+    (forceEntered)="onEntered()"
+    [appValue]="fields.dob"
+    class="crm-case-about-field"></app-date-of-birth-field>
+
+  <!-- city -->
+  <app-city-field
+    (appValueChange)="onFieldChange('city', $event)"
+    (entered)="onEntered()"
+    (forceEntered)="onEntered()"
+    [appValue]="fields.city"
+    class="crm-case-about-field"></app-city-field>
+
+  <!-- state -->
+  <app-state-field
+    (appValueChange)="onFieldChange('state', $event)"
+    [appValue]="fields.state"
+    class="crm-case-about-field"></app-state-field>
+</div>
+
+<!-- field row -->
+<div
+  class="crm-case-about-fields">
+  <!-- ssn -->
+  <app-ssn-field
+    (appValueChange)="onFieldChange('ssn', $event)"
+    (entered)="onEntered()"
+    (forceEntered)="onEntered()"
+    [appValue]="fields.ssn"
+    class="crm-case-about-field"></app-ssn-field>
+</div>

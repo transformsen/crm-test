@@ -1,0 +1,55 @@
+<!-- search field line -->
+<div
+  class="crm-search-field-line"
+  fxLayout="row"
+  fxLayoutGap="20px">
+  <!-- organization id -->
+  <app-name-field
+    #groupId
+    (appValueChange)="onFieldChange('groupId', $event)"
+    (entered)="onEntered()"
+    (forceEntered)="onEntered()"
+    [appValue]="fields.groupId"
+    [minLength]="4"
+    class="crm-search-field"
+    label="Group ID"></app-name-field>
+
+  <!-- organization name -->
+  <app-name-field
+    #subGroupId
+    (appValueChange)="onFieldChange('subGroupId', $event)"
+    (entered)="onEntered()"
+    (forceEntered)="onEntered()"
+    [appValue]="fields.subGroupId"
+    [minLength]="4"
+    class="crm-search-field"
+    label="Subgroup ID"></app-name-field>
+</div>
+
+<!-- search field line -->
+<div
+  class="crm-search-field-line"
+  fxLayout="row"
+  fxLayoutGap="20px">
+  <!-- organization id -->
+  <app-name-field
+    #groupName
+    (appValueChange)="onFieldChange('groupName', $event)"
+    (entered)="onEntered()"
+    (forceEntered)="onEntered()"
+    [appValue]="fields.groupName"
+    [minLength]="2"
+    class="crm-search-field"
+    label="Group Name"></app-name-field>
+
+  <!-- organization name -->
+  <app-name-field
+    #subGroupName
+    (appValueChange)="onFieldChange('subGroupName', $event)"
+    (entered)="onEntered()"
+    (forceEntered)="onEntered()"
+    [appValue]="fields.subGroupName"
+    [minLength]="2"
+    class="crm-search-field"
+    label="Subgroup Name"></app-name-field>
+</div>

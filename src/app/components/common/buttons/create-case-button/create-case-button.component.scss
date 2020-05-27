@@ -1,0 +1,32 @@
+@import "src/styles/colors";
+@import "src/styles/mixins";
+@import "src/styles/theming";
+
+:host {
+  display: inline-block;
+
+  ::ng-deep {
+    @include crmJadeTheme;
+  }
+
+  button.mat-flat-button.mat-primary {
+    &:disabled {
+      background-color: rgba($black, .38);
+      color: $white;
+    }
+  }
+}
+
+button {
+  @include padding(0 12.5px 0 8px);
+
+  ::ng-deep {
+    span {
+      @include flex(center, center);
+    }
+  }
+}
+
+app-icon-add {
+  margin-right: 7.5px;
+}

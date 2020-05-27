@@ -1,0 +1,25 @@
+<!-- title -->
+<div class="crm-hipaa-title">
+  Hipaa Pathways
+</div>
+
+<!-- pathways -->
+<div class="crm-hipaa-pathways">
+  <!-- pathway -->
+  <div
+    *ngFor="let item of targetPathways"
+    class="crm-hipaa-pathway">
+    <ng-container
+      *ngFor="let path of item.items; let index = index">
+      <!-- for common paths -->
+      <ng-container *ngIf="index !== item.items.length - 1; else last">
+        <span [class.checked]="isValid(item.items, index)">{{path.label}} &gt; </span>
+      </ng-container>
+
+      <!-- for last path -->
+      <ng-template #last>
+        <span [class.checked]="isValid(item.items, index)">{{path.label}}</span>
+      </ng-template>
+    </ng-container>
+  </div>
+</div>

@@ -1,0 +1,36 @@
+<!-- search field line -->
+<div
+  class="crm-search-field-line"
+  fxLayout="row"
+  fxLayoutGap="20px">
+  <!-- npn -->
+  <app-npn-field
+    (appValueChange)="onFieldChange('npn', $event)"
+    (entered)="onEntered()"
+    (forceEntered)="onEntered()"
+    [appValue]="fields.npn"
+    class="crm-search-field"></app-npn-field>
+
+  <!-- first name -->
+  <app-name-field
+    #firstName
+    (appValueChange)="onFieldChange('firstName', $event)"
+    (entered)="onEntered()"
+    (forceEntered)="onEntered()"
+    [appValue]="fields.firstName"
+    [minLength]="2"
+    class="crm-search-field"
+    label="First Name"></app-name-field>
+
+  <!-- last name -->
+  <app-name-field
+    #lastName
+    (appValueChange)="onFieldChange('lastName', $event)"
+    (entered)="onEntered()"
+    (forceEntered)="onEntered()"
+    [appValue]="fields.lastName"
+    [minLength]="2"
+    class="crm-search-field"
+    label="Last Name"></app-name-field>
+</div>
+

@@ -1,0 +1,42 @@
+@import "src/styles/mixins";
+@import "src/styles/colors";
+
+:host {
+  @include padding(0 48px);
+  display: block;
+  height: 48px;
+  background-color: $pacific-blue;
+}
+
+nav {
+  a {
+    @include openSansBold;
+    position: relative;
+    padding: 0;
+    min-width: 0;
+    width: 120px;
+    color: rgba($white, .6);
+    font-size: 14px;
+    opacity: 1;
+    letter-spacing: 1.3px;
+
+    // for tab active
+    &.active {
+      color: $white;
+
+      &::after {
+        @include bottomLeft;
+        position: absolute;
+        content: '';
+        width: 100%;
+        height: 2px;
+        background-color: $white;
+      }
+    }
+
+    & + a {
+      margin-left: 51.5px;
+    }
+  }
+}
+
